@@ -1,55 +1,19 @@
-name: GitHub Pages
+name: Pelican site CI
 
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
   push:
     branches:
       - main
 
-permissions:
-  contents: read
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   build:
-    name: Build
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout do repository
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
-
-      - name: Configure python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "2.7"
-          cache: pip
-
-      - name: Install dependency
-        run: pip install -r requirements.txt
-
-      - name: Build do site
-        run: make publish
-
-      - name: Upload do site
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: output/
-
-  deploy:
-    name: Deploy
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy no GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - uses: actions/checkout@v2
+    - uses: nelsonjchen/gh-pages-pelican-action@0.1.5
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
