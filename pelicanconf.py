@@ -1,5 +1,5 @@
 AUTHOR = 'Saket Sinha'
-SITENAME = 'Libre Car'
+SITENAME = 'Libre Car Control'
 SITEURL = ''
 
 PATH = 'content'
@@ -16,8 +16,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Website', 'https://saketsinha.de/'),
-         ('LibreCar Proposal', 'https://saketsinha.de/proposal/'),)
+LINKS = (('My Website', 'https://saketsinha.de/'),
+         ('Libre Car Control Proposal', 'https://saketsinha.de/proposal/'),)
 
 # Social widget
 SOCIAL = (('Instagram', 'https://www.instagram.com/saket.sinha34/'),)
